@@ -1,6 +1,8 @@
+import UserNavbar from '@/components/UserNavbar'
 import React, { useEffect, useState } from 'react'
-
+import { useRouter } from 'next/navigation'
 const index = () => {
+    const router = useRouter()
     const [user, setUser] = useState({})
     useEffect(function () {
         fetch('http://localhost:5000', {
@@ -8,10 +10,12 @@ const index = () => {
         })
             .then(res => res.json())
             .then(result => setUser(result))
-            .catch(err => console.log(err))
+            .catch(err => router.push('/sign/in'))
     }, [])
     return (
-        <div>{user.firstName} {user.lastName}</div>
+        <div>
+            <UserNavbar firstName={user.firstName} lastName={user.lastName} />
+        </div>
     )
 }
 
