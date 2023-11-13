@@ -1,6 +1,8 @@
 import UserNavbar from '@/components/UserNavbar'
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import AddToDo from '@/components/AddToDo'
+import styles from '@/styles/ToDoS.module.css'
 const index = () => {
     const router = useRouter()
     const [user, setUser] = useState({})
@@ -15,6 +17,9 @@ const index = () => {
     return (
         <div>
             <UserNavbar firstName={user.firstName} lastName={user.lastName} />
+            <div className={styles.toDoSComponent}>
+                <AddToDo />
+            </div>
         </div>
     )
 }
