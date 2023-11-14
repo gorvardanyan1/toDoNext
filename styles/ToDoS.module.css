@@ -1,3 +1,4 @@
+
 .toDoSComponent {
     display: flex;
     justify-content: center;
@@ -55,4 +56,12 @@
 .addToDo form div:last-child {
     display: flex;
     justify-content: center;
+}
+.toDoListContainer{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.toDoListContainer ul{
+    list-style-type: none;
 }
