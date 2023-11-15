@@ -9,7 +9,7 @@ const index = () => {
     const [user, setUser] = useState({})
 
     useEffect(function () {
-        fetch('http://localhost:5000', {
+        fetch('https://to-do-api-mu.vercel.app/', {
             credentials: 'include'
         })
             .then(res => res.json())

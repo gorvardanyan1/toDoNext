@@ -7,7 +7,7 @@ const AddToDo = ({ setAddToDo }) => {
             title: e.target.title.value,
             description: e.target.description.value
         }
-        fetch('http://localhost:5000/todos', {
+        fetch('https://to-do-api-mu.vercel.app/todos', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

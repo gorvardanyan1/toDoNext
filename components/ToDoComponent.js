@@ -2,15 +2,18 @@ import AddToDo from '@/components/AddToDo'
 import styles from '@/styles/ToDoS.module.css'
 import ToDoList from '@/components/ToDoList'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 const ToDoComponent = () => {
+    const router = useRouter()
     const [addToDo, setAddToDo] = useState(false)
     const [todo, setToDos] = useState([])
     useEffect(function () {
-        fetch('http://localhost:5000/todos', {
+        fetch('https://to-do-api-mu.vercel.app/todos', {
             credentials: 'include'
         })
             .then(res => res.json())
             .then(result => setToDos(result))
+            .catch(err => router.push('/sign/in'))
     }, [addToDo])
     return (
         <>

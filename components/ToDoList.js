@@ -13,7 +13,7 @@ const ToDoList = ({ todos, setToDos }) => {
         }
     };
     const handleRemoveToDo = (id) => {
-        fetch(`http://localhost:5000/todos/${id}`, {
+        fetch(`https://to-do-api-mu.vercel.app/todos/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const ToDoList = ({ todos, setToDos }) => {
                                         }}
                                     >
                                         <p>Description: {todo.description}</p>
-                                        <img src='cross.png' width={29} height={29} onClick={()=>handleRemoveToDo(todo._id)} />
+                                        <img src='cross.png' width={29} height={29} onClick={() => handleRemoveToDo(todo._id)} />
                                     </motion.div>
                                 )}
                             </AnimatePresence>

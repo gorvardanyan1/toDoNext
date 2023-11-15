@@ -15,7 +15,7 @@ const Up = () => {
         }
         console.log(signUpData);
 
-        fetch('http://localhost:5000/sign/up', {
+        fetch('https://to-do-api-mu.vercel.app/sign/up', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
