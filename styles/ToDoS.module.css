@@ -66,7 +66,9 @@
 .toDoListContainer ul {
     list-style-type: none;
 }
-
+.toDoListContainer table tr{
+    margin-top: 10px;
+}
 .toDoListContainer table td:nth-child(2) {
     /* display: flex;
     align-items: center;
@@ -74,7 +76,6 @@
     cursor: pointer;
     font-size: 25px;
     padding: 8px;
-    margin-bottom: 8px;
     border-radius: 4px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
