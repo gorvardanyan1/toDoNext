@@ -9,14 +9,14 @@ const index = () => {
     const [user, setUser] = useState({})
 
     useEffect(function () {
-        fetch('https://to-do-api-mu.vercel.app/', {
+        fetch('https://to-do-api-mu.vercel.app', {
             credentials: 'include'
         })
             .then(res => res.json())
             .then(result => setUser(result))
             .catch(err => router.push('/sign/in'))
     }, [])
-   
+
     return (
         <div>
             <UserNavbar firstName={user.firstName} lastName={user.lastName} />
