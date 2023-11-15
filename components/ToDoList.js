@@ -35,39 +35,43 @@ const ToDoList = ({ todos, setToDos }) => {
         <div className={styles.toDoListContainer}>
             <div>
                 <h2>To-Do List</h2>
-                <ul>
+                <table>
                     {todos.map((todo) => (
-                        <li key={todo._id} onClick={() => handleTodoClick(todo)}
-                            style={{
-                                backgroundColor: selectedTodo === todo ? '#2b4c2e' : 'transparent',
-                            }}
-                        >
-                            <input type="checkbox" name="isCompleted" id="isCompleted" />
-                            {todo.title}
+                        <tr>
+                            <td> <input type="checkbox" name="isCompleted" id="isCompleted" /></td>
+                            <td key={todo._id} onClick={() => handleTodoClick(todo)}
+                                style={{
+                                    backgroundColor: selectedTodo === todo ? '#2b4c2e' : 'transparent',
+                                }}
+                            >
 
-                            <AnimatePresence>
-                                {selectedTodo === todo && (
-                                    <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 'auto' }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                        style={{
-                                            marginTop: '8px',
-                                            paddingLeft: '10px',
-                                            borderLeft: '2px solid #457b9d',
-                                            color: '#ffffff', // Text color in the dropdown
-                                        }}
-                                    >
-                                        <p>Description: {todo.description}</p>
-                                        <img src='cross.png' width={29} height={29} onClick={() => handleRemoveToDo(todo._id)} />
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </li>
+                                {todo.title}
+
+                                <AnimatePresence>
+                                    {selectedTodo === todo && (
+                                        <motion.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            style={{
+                                                marginTop: '8px',
+                                                paddingLeft: '10px',
+                                                borderLeft: '2px solid #457b9d',
+                                                color: '#ffffff', // Text color in the dropdown
+                                            }}
+                                        >
+                                            <p>Description: {todo.description}</p>
+                                            <img src='cross.png' width={29} height={29} onClick={() => handleRemoveToDo(todo._id)} />
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </td>
+                        </tr>
                     ))}
-                </ul>
+                </table>
+
             </div>
-        </div>
+        </div >
 
     );
 }
