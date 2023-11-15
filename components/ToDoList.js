@@ -1,19 +1,35 @@
 import { useEffect, useState } from "react";
 import styles from "@/styles/ToDoS.module.css"
 import { motion, AnimatePresence } from 'framer-motion';
-const ToDoList = ({ todos }) => {
-    console.log(todos);
+const ToDoList = ({ todos, setToDos }) => {
+
     const [selectedTodo, setSelectedTodo] = useState(null);
 
     const handleTodoClick = (todo) => {
         if (selectedTodo === todo) {
-            // If the same todo is clicked again, close the dropdown
             setSelectedTodo(null);
         } else {
-            // Otherwise, open the dropdown for the clicked todo
             setSelectedTodo(todo);
         }
     };
+    const handleRemoveToDo = (id) => {
+        fetch(`http://localhost:5000/todos/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+        })
+            .then(result => {
+                fetch('http://localhost:5000/todos', {
+                    credentials: 'include'
+                })
+                    .then(res => res.json())
+                    .then(result => setToDos(result))
+            })
+            .catch(err => console.log(err))
+
+    }
 
     return (
         <div className={styles.toDoListContainer}>
@@ -23,23 +39,18 @@ const ToDoList = ({ todos }) => {
                     {todos.map((todo) => (
                         <li key={todo._id} onClick={() => handleTodoClick(todo)}
                             style={{
-                                cursor: 'pointer',
                                 backgroundColor: selectedTodo === todo ? '#2b4c2e' : 'transparent',
-
-                                padding: '8px',
-                                marginBottom: '8px',
-                                borderRadius: '4px',
-                                transition: 'background-color 0.3s ease, color 0.3s ease',
                             }}
                         >
+                            <input type="checkbox" name="isCompleted" id="isCompleted" />
                             {todo.title}
+
                             <AnimatePresence>
                                 {selectedTodo === todo && (
                                     <motion.div
                                         initial={{ opacity: 0, height: 0 }}
                                         animate={{ opacity: 1, height: 'auto' }}
                                         exit={{ opacity: 0, height: 0 }}
-
                                         style={{
                                             marginTop: '8px',
                                             paddingLeft: '10px',
@@ -48,7 +59,7 @@ const ToDoList = ({ todos }) => {
                                         }}
                                     >
                                         <p>Description: {todo.description}</p>
-                                        {/* Add any additional information you want to display */}
+                                        <img src='cross.png' width={29} height={29} onClick={()=>handleRemoveToDo(todo._id)} />
                                     </motion.div>
                                 )}
                             </AnimatePresence>

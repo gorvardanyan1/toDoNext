@@ -15,10 +15,9 @@ export default function Home() {
         <div className={styles.firstPageFlex}>
           <h2 className={styles.appHeader}>That is To Do App </h2>
           <div className={styles.signBtnBlock}>
-              <Link href='sign/in'>Sign In</Link>
-          <Link href='sign/up'>Sign Up</Link>
+            <Link href='sign/in'>Sign In</Link>
+            <Link href='sign/up'>Sign Up</Link>
           </div>
-        
         </div>
       </main>
     </>

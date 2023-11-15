@@ -23,6 +23,7 @@ const Up = () => {
             body: JSON.stringify(signUpData),
         })
             .then(response => router.push('/sign/in'))
+            .catch(err => console.error(err))
     }
     return (
         <div className={styles.up}>

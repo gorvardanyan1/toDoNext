@@ -1,4 +1,3 @@
-
 .toDoSComponent {
     display: flex;
     justify-content: center;
@@ -57,11 +56,25 @@
     display: flex;
     justify-content: center;
 }
-.toDoListContainer{
+
+.toDoListContainer {
     text-align: center;
     display: flex;
     justify-content: center;
 }
-.toDoListContainer ul{
+
+.toDoListContainer ul {
     list-style-type: none;
+}
+
+.toDoListContainer ul li {
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between; */
+    cursor: pointer;
+    font-size: 25px;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }

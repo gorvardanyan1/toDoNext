@@ -1,7 +1,8 @@
 import React from 'react'
 import styles from "@/styles/ToDoS.module.css"
-const AddToDo = () => {
+const AddToDo = ({ setAddToDo }) => {
     const handleSubmit = (e) => {
+        e.preventDefault()
         const toDoData = {
             title: e.target.title.value,
             description: e.target.description.value
@@ -14,10 +15,10 @@ const AddToDo = () => {
             credentials: 'include',
             body: JSON.stringify(toDoData),
         })
-            .then(response => response.json())
-            .then(result => {
-                console.log(result)
-                location.reload()
+            .then(response => {
+                e.target.title.value = ""
+                e.target.description.value = ""
+                setAddToDo(prev => !prev)
             })
             .catch(err => console.log(err))
     }
